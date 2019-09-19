@@ -2,6 +2,22 @@ var topics = ["dogs", "cats", "pandas", "elephants", "rhinos", "iguanas"];
 var gifs = $("#Gifs");
 
 
+$("#animal-addition").on("click", function(event){
+    event.preventDefault();
+    var newAnimal = $("#animals").val().trim();
+    topics.push(newAnimal);
+    var btn = document.createElement("button");
+        var t=document.createTextNode(newAnimal);
+        btn.appendChild(t);
+        document.body.appendChild(btn);
+        $(btn).attr("value", newAnimal);
+
+    console.log(topics)
+    // createButtons();
+})
+
+
+function createButtons(){
     for (var i=0; i<topics.length; i++){
         var btn = document.createElement("button");
         var t=document.createTextNode(topics[i]);
@@ -10,9 +26,10 @@ var gifs = $("#Gifs");
         $(btn).attr("value", topics[i]);
 
     };
-
+};
+createButtons();
 $("button").on("click", function() {
-
+    event.preventDefault();
 
     //this needs fixing to pull correct gifs
     var search = $(this).val();
@@ -26,6 +43,7 @@ $("button").on("click", function() {
     url: queryURL,
     method: "GET"
     })
+
     .then(function(response) {
         var results = response.data;
 
@@ -43,11 +61,24 @@ $("button").on("click", function() {
             $("#Gifs").prepend(gifDiv);
           }
         }
+        
       });
 // $("#Gifs").html(buttonList)
 })
+console.log(topics)
+// $("#animal-addition").on("click", function(event){
+//     event.preventDefault();
+//     var newAnimal = $("#animals").val().trim();
+//     topics.push(newAnimal);
+//     var btn = document.createElement("button");
+//         var t=document.createTextNode(newAnimal);
+//         btn.appendChild(t);
+//         document.body.appendChild(btn);
+//         $(btn).attr("value", newAnimal);
 
-
+//     console.log(topics)
+//     // createButtons();
+// })
 // function loadGifs() {
 
 //     for (var i=0; i<topics.length; i++){
