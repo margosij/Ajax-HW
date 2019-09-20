@@ -111,21 +111,22 @@ $("button").on("click", function() {
             $("#Gifs").prepend(gifDiv);
           }
         }
+
         
       });
 
-      $(document).on("click", ".animalGifs", function(){
-          
-        //     var state = $(this).attr("src");
-        // if ($(this).hasClass("still")) {
-        //     $(this).attr("src", animalImage.replace(/\_s.gif/i, ".gif"));
-        //     $(this).removeClass("still");
-        //     }
-            
-        // else {
-        //     $(this).addClass("still");
-        //     $(this).attr("src", state.replace(/\_height.url\i, "height_still.url"))
-        // }
-      });
+    $(document).on("click", ".animalGifs", function(){
+
+        var state = $(this).attr("data-state");
+    if (state === "still") {
+        $(this).attr("src", $(this).attr("data-animate"));
+        $(this).attr("data-state", "animate");
+        }
+
+    else {
+        $(this).attr("src", $(this).attr("data-still"));
+        $(this).attr("data-state", "still");
+    }
+  });
 
 })
