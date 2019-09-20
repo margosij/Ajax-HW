@@ -43,7 +43,8 @@ $("#animal-addition").on("click", function(event){
                     var rating = results[i].rating;
                     var p = $("<p>").text("Rating: " + rating);
                     var animalImage = $("<img>");
-                    animalImage.attr("src", results[i].images.fixed_height.url);
+                    // animalImage.attr("src", results[i].images.fixed_height.url);
+                    animalImage.attr("src", results[i].images.fixed_height_still.url);
                     gifDiv.append(p);
                     gifDiv.append(animalImage);
         
@@ -52,7 +53,7 @@ $("#animal-addition").on("click", function(event){
                 }
                 
               });
-        // $("#Gifs").html(buttonList)
+
         })
 
 
@@ -60,7 +61,6 @@ $("#animal-addition").on("click", function(event){
 
 
 
-    console.log(topics)
     // createButtons();
 })
 
@@ -102,7 +102,9 @@ $("button").on("click", function() {
             var rating = results[i].rating;
             var p = $("<p>").text("Rating: " + rating);
             var animalImage = $("<img>");
-            animalImage.attr("src", results[i].images.fixed_height.url);
+            // animalImage.attr("src", results[i].images.fixed_height.url);
+            animalImage.attr("src", results[i].images.fixed_height_still.url);
+            animalImage.addClass("animalGifs");
             gifDiv.append(p);
             gifDiv.append(animalImage);
 
@@ -111,26 +113,19 @@ $("button").on("click", function() {
         }
         
       });
-// $("#Gifs").html(buttonList)
+
+      $(document).on("click", ".animalGifs", function(){
+          
+        //     var state = $(this).attr("src");
+        // if ($(this).hasClass("still")) {
+        //     $(this).attr("src", animalImage.replace(/\_s.gif/i, ".gif"));
+        //     $(this).removeClass("still");
+        //     }
+            
+        // else {
+        //     $(this).addClass("still");
+        //     $(this).attr("src", state.replace(/\_height.url\i, "height_still.url"))
+        // }
+      });
+
 })
-console.log(topics)
-// $("#animal-addition").on("click", function(event){
-//     event.preventDefault();
-//     var newAnimal = $("#animals").val().trim();
-//     topics.push(newAnimal);
-//     var btn = document.createElement("button");
-//         var t=document.createTextNode(newAnimal);
-//         btn.appendChild(t);
-//         document.body.appendChild(btn);
-//         $(btn).attr("value", newAnimal);
-
-//     console.log(topics)
-//     // createButtons();
-// })
-// function loadGifs() {
-
-//     for (var i=0; i<topics.length; i++){
-//       displayQuestion(topics[i])
-//     }
-
-// }
