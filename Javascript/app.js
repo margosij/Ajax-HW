@@ -42,8 +42,8 @@ $("#animal-addition").on("click", function(event){
                     animalImage.attr("data-still", results[i].images.fixed_height_still.url);
                     animalImage.attr("data-animate", results[i].images.fixed_height.url);
                     animalImage.addClass("animalGifs");
-                    gifDiv.append(p);
-                    gifDiv.append(animalImage);
+                    gifDiv.prepend(p);
+                    gifDiv.prepend(animalImage);
 
                     $("#Gifs").prepend(gifDiv);
                   }
@@ -93,8 +93,8 @@ $("button").on("click", function() {
             animalImage.attr("data-still", results[i].images.fixed_height_still.url);
             animalImage.attr("data-animate", results[i].images.fixed_height.url);
             animalImage.addClass("animalGifs");
-            gifDiv.append(p);
-            gifDiv.append(animalImage);
+            gifDiv.prepend(p);
+            gifDiv.prepend(animalImage);
 
             $("#Gifs").prepend(gifDiv);
           }
