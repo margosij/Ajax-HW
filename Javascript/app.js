@@ -12,19 +12,12 @@ $("#animal-addition").on("click", function(event){
         document.body.appendChild(btn);
         $(btn).attr("value", newAnimal);
 
-
-
-
-        
-
         $("button").on("click", function() {
             event.preventDefault();
         
-            //this needs fixing to pull correct gifs
+
             var search = $(this).val();
         
-        
-            //making an api key variable just to have it saved on here. don't plan on actually using it in code anywhere
             // var APIKey = "wu03X6rnZ6zfygqbLEfVz3q5hJDvGRCj"
             var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + search + "&api_key=wu03X6rnZ6zfygqbLEfVz3q5hJDvGRCj&limit=10";
         
@@ -45,25 +38,21 @@ $("#animal-addition").on("click", function(event){
                     var animalImage = $("<img>");
                     // animalImage.attr("src", results[i].images.fixed_height.url);
                     animalImage.attr("src", results[i].images.fixed_height_still.url);
+                    animalImage.attr("data-state", "still");
+                    animalImage.attr("data-still", results[i].images.fixed_height_still.url);
+                    animalImage.attr("data-animate", results[i].images.fixed_height.url);
+                    animalImage.addClass("animalGifs");
                     gifDiv.append(p);
                     gifDiv.append(animalImage);
-        
+
                     $("#Gifs").prepend(gifDiv);
                   }
                 }
                 
               });
 
-        })
-
-
-
-
-
-
-    // createButtons();
-})
-
+        });
+    });
 
 function createButtons(){
     for (var i=0; i<topics.length; i++){
@@ -79,11 +68,8 @@ createButtons();
 $("button").on("click", function() {
     event.preventDefault();
 
-    //this needs fixing to pull correct gifs
     var search = $(this).val();
 
-
-    //making an api key variable just to have it saved on here. don't plan on actually using it in code anywhere
     // var APIKey = "wu03X6rnZ6zfygqbLEfVz3q5hJDvGRCj"
     var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + search + "&api_key=wu03X6rnZ6zfygqbLEfVz3q5hJDvGRCj&limit=10";
 
@@ -102,8 +88,10 @@ $("button").on("click", function() {
             var rating = results[i].rating;
             var p = $("<p>").text("Rating: " + rating);
             var animalImage = $("<img>");
-            // animalImage.attr("src", results[i].images.fixed_height.url);
             animalImage.attr("src", results[i].images.fixed_height_still.url);
+            animalImage.attr("data-state", "still");
+            animalImage.attr("data-still", results[i].images.fixed_height_still.url);
+            animalImage.attr("data-animate", results[i].images.fixed_height.url);
             animalImage.addClass("animalGifs");
             gifDiv.append(p);
             gifDiv.append(animalImage);
@@ -128,5 +116,6 @@ $("button").on("click", function() {
         $(this).attr("data-state", "still");
     }
   });
+  
 
 })
